@@ -10,8 +10,9 @@
 
 <body>
   <div class="container">
-    <header></header>
     <main></main>
+    <section class="one"></section>
+    <section class="two"></section>
     <aside></aside>
     <footer></footer>
   </div>
@@ -25,43 +26,76 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: #7159c1;
+
+    width: 100%;
+    height: 100%;
   }
 
   .container {
+    background: black;
+
+    width: 100vw;
+    height: 100vh;
+
     display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: 20vh 70vh 10vh;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
 
-    grid-template-areas: "header header""main aside""footer footer";
-    grid-template-areas: "header .""main aside""footer footer";
-  }
+    grid-template-areas:
+      "main main"
+      "sectionOne aside"
+      "sectionTwo aside"
+      "footer footer";
 
-  header {
-    background: yellow;
-    /*   height: 100px; */
-
-    grid-area: header;
+    grid-gap: 5px;
   }
 
   main {
-    background: blue;
-    /*   height: 100px; */
+    background: yellow;
+    width: 100%;
 
     grid-area: main;
   }
 
+  section.one {
+    background: red;
+
+    grid-area: sectionOne;
+  }
+
+  section.two {
+    background: pink;
+
+    grid-area: sectionTwo;
+  }
+
   aside {
     background: green;
-    /*   height: 100px; */
 
     grid-area: aside;
+    max-height: 50vh;
   }
 
   footer {
-    background: red;
-    /*   height: 100px; */
+    background: blue;
 
     grid-area: footer;
+  }
+
+
+  @media screen and (min-width: 768px) {
+
+    .container {
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1.5fr;
+
+      grid-template-areas:
+        "main sectionOne sectionTwo"
+        "main aside aside"
+        "footer aside aside";
+
+      grid-gap: 5px;
+    }
+
   }
 </style>
