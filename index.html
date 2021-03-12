@@ -9,13 +9,29 @@
 </head>
 
 <body>
-  <div class="container">
-    <main></main>
-    <section class="one"></section>
-    <section class="two"></section>
-    <aside></aside>
-    <footer></footer>
-  </div>
+  <main>
+    <div class="container">
+      <section class="sectionList">
+        <h2>Título h2</h2>
+        <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>5</li>
+          <li>6</li>
+          <li>7</li>
+          <li>8</li>
+          <li>9</li>
+          <li>10</li>
+        </ul>
+      </section>
+      <section class="sectionInformation">
+        <h3>Título h3</h3>
+        <a href="#">Ver mais notícias</a>
+      </section>
+    </div>
+  </main>
 </body>
 
 </html>
@@ -32,69 +48,65 @@
   }
 
   .container {
-    background: black;
-
-    width: 100vw;
-    height: 100vh;
-
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: 1fr;
+    grid-template-areas: "sectionFirst""sectionSecond";
 
-    grid-template-areas:
-      "main main"
-      "sectionOne aside"
-      "sectionTwo aside"
-      "footer footer";
-
-    grid-gap: 5px;
-  }
-
-  main {
-    background: yellow;
     width: 100%;
-
-    grid-area: main;
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
-  section.one {
-    background: red;
-
-    grid-area: sectionOne;
-  }
-
-  section.two {
+  .sectionList {
     background: pink;
 
-    grid-area: sectionTwo;
+    grid-area: sectionFirst;
   }
 
-  aside {
-    background: green;
-
-    grid-area: aside;
-    max-height: 50vh;
+  .sectionList h2 {
+    text-align: center;
   }
 
-  footer {
+  .sectionList ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: auto;
+
+    grid-gap: 15px;
+  }
+
+  .sectionList ul li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 50px;
+
     background: blue;
-
-    grid-area: footer;
+    color: white;
   }
 
+  .sectionInformation {
+    background: yellow;
+
+    grid-area: sectionSecond;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
 
   @media screen and (min-width: 768px) {
-
-    .container {
-      grid-template-columns: 2fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1.5fr;
-
-      grid-template-areas:
-        "main sectionOne sectionTwo"
-        "main aside aside"
-        "footer aside aside";
-
-      grid-gap: 5px;
+    .sectionList ul {
+      grid-template-columns: 1fr 1fr 1fr;
     }
 
   }
